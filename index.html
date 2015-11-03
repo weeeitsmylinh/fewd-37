@@ -6,16 +6,19 @@
   </head>
 
   <style media="screen">
-    h1 {
-      color: blue;
-      font-size: 30pt;
+    body{
       font-family: Helvetica;
+      margin: 0;
+    }
+
+    h1 {
+      color: rgba(255,0,0,.5);
+      font-size: 40pt;
       text-align: center;
     }
     p {
       color: black;
       font-size: 12pt;
-      font-family: Helvetica;
       width: 50%;
       display: block;
       margin-left: auto;
@@ -25,7 +28,6 @@
     ul {
       color: black;
       font-size: 12pt;
-      font-family: Helvetica;
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -43,18 +45,24 @@
       font-size: 12pt;
       font-weight: bold;
       text-decoration: none;
-      font-family: Helvetica;
     }
     img {
       border-radius: 50%;
       display:block;
       margin-left: auto;
       margin-right: auto;
+      background-color: rgba(255,0,0,.5);
+    }
+    #profile_picture {
+      background: rgba(255,0,0,.5);
+      padding: 5%;
     }
   </style>
 
   <body>
-    <img src="images/profile_picture.jpg" alt="profile_picture" width="30%" height="30%"/>
+    <div id="profile_picture">
+      <img src="images/profile_picture.jpg" alt="profile_picture" width="30%" height="30%"/>
+    </div>
     <h1>My-Linh Le</h1>
     <p>
     Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text I like <a href="https://goo.gl/pakMrf" target="_blank">donuts</a> and these are the kinds I like:
