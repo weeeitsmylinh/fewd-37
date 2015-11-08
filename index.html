@@ -10,35 +10,45 @@
       font-family: Helvetica;
       margin: 0;
     }
-
+    header {
+      background: rgba(0,150,255,.5);
+      margin-bottom:50px;
+      padding: 10px;
+    }
+    img {
+      border-radius: 50%;
+      display:block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 30%;
+      height: 30%;
+    }
     h1 {
       color: rgba(255,255,255,.5);
       font-size: 40pt;
       text-align: center;
+      padding: 0px
     }
-    p {
+    main {
       color: black;
       font-size: 12pt;
       width: 50%;
       display: block;
       margin-left: auto;
       margin-right: auto;
+      text-align: center;
     }
-
+    h2 {
+      color: rgba(0,150,255,.5);
+      font-size: 20pt;
+    }
     ul {
       color: black;
       font-size: 12pt;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      padding: 0px
     }
     li{
       list-style:none;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 50%;
-      text-align: center;
     }
     a {
       color: green;
@@ -46,35 +56,31 @@
       font-weight: bold;
       text-decoration: none;
     }
-    img {
-      border-radius: 50%;
-      display:block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    header {
-      background: rgba(0,150,255,.5);
-      padding: 10px;
-      margin-bottom:50px;
-    }
+
   </style>
 
   <body>
     <header>
-      <img src="images/profile_picture.jpg" alt="profile_picture" width="30%" height="30%"/>
+      <img src="images/profile_picture.jpg" alt="profile_picture"/>
       <h1>My-Linh Le</h1>
     </header>
+    <main>
+      <h2>About</h2>
+      <p>
+      I like <a href="https://goo.gl/pakMrf" target="_blank">donuts</a> and these are the kinds I like:
+      </p>
 
-    <p>
-    Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text Text text Text I like <a href="https://goo.gl/pakMrf" target="_blank">donuts</a> and these are the kinds I like:
-    </p>
+      <ul>
+        <li>Chocolate</li>
+        <li>Custard</li>
+        <li>Jelly</li>
+        <li>Cinnamon & Sugar</li>
+      </ul>
 
-    <ul>
-      <li>Chocolate</li>
-      <li>Custard</li>
-      <li>Jelly</li>
-      <li>Cinnamon & Sugar</li>
-    </ul>
+      <h2>Homework Assignments</h2>
+      <ul>
+        <li><a href="homework/week-2/index.html">Week 2</a></li>
+    </main>
   </body>
 
 </html>
