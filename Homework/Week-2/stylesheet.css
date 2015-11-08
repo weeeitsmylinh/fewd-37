@@ -123,7 +123,11 @@
     padding: 10px
     float: right;
   }
-  input:focus{
+  input[type=text]:focus,[type=email]:focus,[type=password]:focus{
+    border: solid 1px #000000;
+    box-shadow: 0 0 5px 1px #000000;
+  }
+  input[type=text]:valid,input[type=email]:valid,[type=password]:valid{
     border: solid 1px green;
     box-shadow: 0 0 5px 1px green;
   }
