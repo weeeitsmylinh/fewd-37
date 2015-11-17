@@ -32,7 +32,30 @@
 
     <script type="text/javascript" src="interface.js"></script>
     <script type="text/javascript">
-      // Your code goes here!
+
+      //Fahrenheit to Celcius//
+      function calcFahrenheitToCelcius(num){
+        var x = (num - 32) * (5/9);
+        return x;
+      }
+
+      //Ceclius to Fahrenheit//
+      function calcCelciusToFarenheit(num){
+        var x = (num * (9/5))+32;
+        return x;
+      }
+
+      //Radius to Circumference//
+      function calcCircumference(num){
+        var x = Math.PI * num;
+        return x;
+      }
+
+      //Pythagorean Theorem//
+      function calcLongestSide(a,b){
+        var x = Math.sqrt((a * a) + (b*b));
+        return x;
+      }
     </script>
   </body>
 </html>
