@@ -5,10 +5,23 @@ body {
   font-family: Arial;
   font-size: 20px;
   line-height: 30px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.header {
+  height: 50px;
+  background-color: rgba(176,65,65,0.5);
+}
+
 h1 {
-  font-size: 20px;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
+
 input {
   font-size: inherit;
   line-height: inherit;
@@ -19,9 +32,37 @@ input {
 input[disabled] {
   border: 0;
 }
+
 .panel {
-  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
+
+/*centering this took foreverrrrrr*/
+.temp{
+  width: 250px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin: right: auto;
+  padding: 20px;
+  text-align: center;
+
+}
+
+input.temp-f{
+  width: 80px;
+  float: left;
+  padding: 0px;
+}
+input.temp-c {
+  width: 80px;
+  float: right;
+  padding: 0px;
+
+}
+
 .py {
   background-image: url('http://cloud.avandamiri.com/image/0l0a39261I29/triangle.png');
   background-size: 400px 260px;
@@ -52,6 +93,7 @@ input[disabled] {
 .circum {
   position: relative;
   height: 200px;
+  width: 60%;
 }
 .circle {
   height: 200px;
@@ -72,11 +114,4 @@ input[disabled] {
   top: 85px;
   left: 360px;
   width: 140px;
-}
-.temp-f,
-.temp-c {
-  width: 80px;
-}
-.temp {
-  padding-left: 150px;
 }

@@ -6,14 +6,18 @@
     <link rel="stylesheet" href="stylesheet.css" media="screen">
   </head>
   <body>
-    <h1>Fahrenheit to Celcius</h1>
+    <div class="header">
+      <h1>Fahrenheit to Celcius</h1>
+    </div>
 
     <div class="panel temp">
       <input type="text" class="temp-f" placeholder="℉">⇄
       <input type="text" class="temp-c" placeholder="℃">
     </div>
 
-    <h1>Radius to Circumference</h1>
+    <div class="header">
+      <h1>Radius to Circumference</h1>
+    </div>
 
     <div class="panel circum">
       <div class="circle">
@@ -22,7 +26,9 @@
       <input type="text" class="circum-c" placeholder="circumference" disabled>
     </div>
 
-    <h1>Pythagorean Theorem</h1>
+    <div class="header">
+      <h1>Pythagorean Theorem</h1>
+    </div>
 
     <div class="panel py">
       <input type="text" class="py-a" placeholder="A">
@@ -41,20 +47,22 @@
 
       //Ceclius to Fahrenheit//
       function calcCelciusToFarenheit(num){
-        var x = (num * (9/5))+32;
-        return x;
+        return (num * (9/5))+32;
       }
+
+      //function calcCelciusToFarenheit(num){
+      //var x = (num * (9/5))+32;
+      //return x;
+      //another way of writing the same thing
 
       //Radius to Circumference//
       function calcCircumference(num){
-        var x = Math.PI * num;
-        return x;
+        return Math.PI * num;
       }
 
       //Pythagorean Theorem//
       function calcLongestSide(a,b){
-        var x = Math.sqrt((a * a) + (b*b));
-        return x;
+        return Math.sqrt((a * a) + (b*b));
       }
     </script>
   </body>
