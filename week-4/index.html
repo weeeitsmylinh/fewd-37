@@ -25,4 +25,41 @@ newListItem.textContent = "Finish Homework";
 var parentList = document.querySelector("ul");
 parentList.appendChild(newListItem);
 
+
+var element = document.querySelector("img")
+var element = document.createElement("img")
+element.setAttribute("src","http://.........")
+element.setAttribute("alt","words")
+
+var a = document.createElement("a")
+a.setAttribute("href","http://.......")
+
+element.setAttribute("style","color:red")
+
+</script>
+
+
+
+how to set an attribute to red
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<script type="text/javascript">
+  var listItem1 = document.querySelector("li:nth-child(1)");
+  var listItem2 = document.querySelector("li:nth-child(2)");
+  var listItem3 = document.querySelector("li:nth-child(3)");
+
+listItem.setAttribute("style","color:red");
+
+listItem1.addEventListener("click",toggleCompleted);
+function toggleCompleted(event){
+  event.target.classList.toggle("done");
+}
+
+  function itemClicked(event) {
+    listItem.classList.add("done");
+  }
 </script>

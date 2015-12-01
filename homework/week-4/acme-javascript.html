@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="stylesheet.css" media="screen" >
+  </head>
+  <body>
+
+  </body>
+</html>
+
+<script type="text/javascript">
+  //var header = document.createElement("header");
+  //header.textContent = "MY HEADER";
+  //var body = document.querySelector("body");
+  //body.appendChild(header);
+
+  function createEmptyElement(element,parent){
+    var newElement = document.createElement(element)
+    var parentElement = document.querySelector(parent)
+    parentElement.appendChild(newElement)
+  }
+
+  function createTextContent(tagName,text,parent){
+    var newElement = document.createElement(tagName)
+    newElement.textContent = text;
+    var parentElement = document.querySelector(parent)
+    parentElement.appendChild(newElement)
+  }
+
+  function createLink(tagName,text,parent,attribute,link){
+    var newLink = document.createElement(tagName);
+    newLink.textContent = text;
+    var parentElement = document.querySelector(parent);
+    parentElement.appendChild(newLink);
+    newLink.setAttribute(attribute,link);
+}
+  function createObjectLink (tagName,parent,attribute,link,secondTagName,parent2,text,attribute2,details){
+    var newLink = document.createElement(tagName)
+    var parentElement = document.querySelector(parent);
+    parentElement.appendChild(newLink);
+    newLink.setAttribute(attribute,link);
+    var newObject = document.createElement(secondTagName);
+    newObject.textContent = text;
+    var parentElement2 = document.querySelector(parent2);
+    parentElement2.appendChild(newObject);
+    newObject.setAttribute(attribute2,details);
+
+  }
+
+
+createEmptyElement("header","body");
+createObjectLink("a","header","href","http://www.twitter.com","img","a","","src","http://cloud.avandamiri.com/image/423B1n2p2v0U/acme-corp.jpg")
+createEmptyElement("nav","header");
+createEmptyElement("ul","nav");
+createEmptyElement("li","ul");
+createLink("a","Products","li","href","http://www.google.com");
+createEmptyElement("li","ul");
+createObjectLink("a","li:last-child","href","http://www.facebook.com","button","a:last-child","Sign Up") //I don't know why this wont append to the last a tag//
+createEmptyElement("main","body");
+createTextContent("h1","Welcome to ACME Corp!","main");
+createTextContent("p","text text text text","main");
+createEmptyElement("br","p");
+createEmptyElement("footer","body");
+createTextContent("p","Copyright, 2015","footer");
+createEmptyElement("br","p:last-child");
+
+//look up psuedo selectors for li:last-child
+
+
+
+</script>
