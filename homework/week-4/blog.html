@@ -109,22 +109,37 @@
       // var likeCounter = 0;
 
       link.addEventListener("click", like);
-      link.addEventListener("submit", comment);
+      form.addEventListener("submit", comment);
 
       function like(event) {
         event.preventDefault();
 
+        var likeCounter = document.querySelector(".like-count");
+        var startingCount = likeCounter.textContent;
+        var addLike = parseInt(startingCount) + 1;
+        likeCounter.textContent = addLike;
+
+        //this also works
         // likeCounter++;
         // var likeCount = document.querySelector(".like-count");
         // likeCount.textContent = likeCounter;
-        // Your code for like goes here
       }
 
       function comment(event) {
         event.preventDefault();
 
         var commentBox = document.querySelector("#new-comment-body");
-        // Your code for comments goes here
+        var commentText = commentBox.value;
+        var newCommentDiv = document.createElement("div");
+        var parent = document.querySelector("div#comments");
+        parent.appendChild(newCommentDiv);
+        newCommentDiv.textContent = commentText;
+        commentBox.value = "";
+
+        //1. Select comment box
+        //2. Get comment text from comment box
+        //3. Create new div in div#comments
+        //4. Append comment into new div
       }
     </script>
   </body>
