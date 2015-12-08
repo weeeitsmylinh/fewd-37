@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<style media="screen">
+
+
+  .box{
+    background-color: orange;
+    width: 50%;
+    height: 200px;
+    position: relative;
+    border-radius: 10px;
+  }
+
+/*psuedo elements are childs*/
+
+  .box::after{
+    content: "";
+    height: 20px;
+    width: 0px;
+    border: 40px solid red;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-top-color: orange;
+    border-right-width: 20px;
+    border-left-width: 20px;
+    position: absolute;
+    margin-left: 230px;
+    bottom: -100px;
+    right: 40px;
+  }
+
+  .comment{
+    padding: 40px;
+  }
+</style>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+  </head>
+  <body>
+    <div>
+    <div class="box">
+      <div class="comment">blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</div>
+
+    </div>
+  </div>
+  </body>
+</html>

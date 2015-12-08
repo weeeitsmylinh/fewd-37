@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style media="screen">
+      .box{
+        background-color: rgb(235,197,4);
+        height: 200px;
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+        display: flex;
+
+      }
+      .light{
+        border-radius: 50%;
+        background-color: rgb(83,70,5);
+        height: 150px;
+        width: 150px;
+        margin: 25px;
+        box-shadow: inset 0px 10px 0px 0px black;
+        transition: background-color 600ms;
+
+      }
+
+      .box#red{
+        margin-top: 50px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+
+      .box#green{
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
+
+      .red-light-on {
+        background-color: red;
+      }
+
+      .yellow-light-on{
+        background-color: yellow;
+      }
+
+      .green-light-on{
+        background-color: green;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <section class="button">
+      <button type="button" name="button" class="stop">Stop</button>
+      <button type="button" name="button" class="slow">Slow</button>
+      <button type="button" name="button" class="go">Go</button>
+      <button type="button" name="button" class="caution">Caution</button>
+    </section>
+
+    <div class="box" id="red">
+      <div class="light light-stop">
+      </div>
+    </div>
+
+    <div class="box" id="yellow">
+      <div class="light light-slow">
+      </div>
+
+    </div>
+
+    <div class="box" id="green">
+      <div class="light light-go">
+      </div>
+
+    </div>
+
+  </body>
+
+  <script type="text/javascript">
+
+  var stopButton = document.querySelector(".stop")
+  stopButton.addEventListener("click",clickStopLight);
+  var slowButton = document.querySelector(".slow")
+  slowButton.addEventListener("click",clickSlowLight);
+  var goButton = document.querySelector(".go")
+  goButton.addEventListener("click",clickGoLight);
+  var cautionButton = document.querySelector(".caution")
+  cautionButton.addEventListener("click",blinking);
+
+  function clickStopLight (event){
+     event.preventDefault();
+     var stopLight = document.querySelector(".light-stop");
+     stopLight.classList.add("red-light-on");
+
+     var slowLight = document.querySelector(".light-slow");
+     slowLight.classList.remove("yellow-light-on");
+     var goLight = document.querySelector(".light-go");
+     goLight.classList.remove("green-light-on");
+   }
+
+   function clickSlowLight (event){
+      event.preventDefault();
+      var slowLight = document.querySelector(".light-slow");
+      slowLight.classList.add("yellow-light-on");
+
+      var stopLight = document.querySelector(".light-stop");
+      stopLight.classList.remove("red-light-on");
+      var goLight = document.querySelector(".light-go");
+      goLight.classList.remove("green-light-on");
+    }
+
+  function clickGoLight (event){
+       event.preventDefault();
+       var goLight = document.querySelector(".light-go");
+       goLight.classList.add("green-light-on");
+
+       var stopLight = document.querySelector(".light-stop");
+       stopLight.classList.remove("red-light-on");
+       var slowLight = document.querySelector(".light-slow");
+       slowLight.classList.remove("yellow-light-on");
+
+     }
+
+function toggleSlow(){
+  var slowLight = document.querySelector(".light-slow");
+  slowLight.classList.toggle("yellow-light-on");
+}
+function blinking(event){
+  var blink = setInterval(toggleSlow,500);
+}
+
+  // function clickStopLight (event){
+  //   event.preventDefault();
+  //   var stopLight = document.querySelector(".circle.red");
+  //   stopLight.style.background = "red";
+  //   var slowLight = document.querySelector(".circle.yellow");
+  //   slowLight.style.background = "rgb(83,70,5)";
+  //   var goLight = document.querySelector(".circle.green");
+  //   goLight.style.background = "rgb(83,70,5)";
+  //
+  // }
+  //
+  // function clickSlowLight (event){
+  //   event.preventDefault();
+  //   var slowLight = document.querySelector(".circle.yellow");
+  //   slowLight.style.background = "yellow";
+  //   var stopLight = document.querySelector(".circle.red");
+  //   stopLight.style.background = "rgb(83,70,5)";
+  //   var goLight = document.querySelector(".circle.green");
+  //   goLight.style.background = "rgb(83,70,5)";
+  // }
+  //
+  // function clickGoLight (event){
+  //   event.preventDefault();
+  //   var goLight = document.querySelector(".circle.green");
+  //   goLight.style.background = "green";
+  //   var stopLight = document.querySelector(".circle.red");
+  //   stopLight.style.background = "rgb(83,70,5)";
+  //   var slowLight = document.querySelector(".circle.yellow");
+  //   slowLight.style.background = "rgb(83,70,5)";
+  // }
+  //
+  //
+  // var cautionButton = document.querySelector(".caution")
+  // cautionButton.addEventListener("click",changeColor);
+  //
+  // function changeColor(event) {
+  //   var blinking = setInterval(toggleSlow,1000);
+  // }
+  //
+  // function toggleSlow(){
+  //   var slowLight = document.querySelector(".circle.yellow");
+  //   slowLight.style.background = "yellow";
+  // }
+
+  </script>
+</html>

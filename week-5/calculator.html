@@ -45,22 +45,22 @@ divideButton.addEventListener("click",divide);
 
 function add (event){
   event.preventDefault();
-  result.value = parseInt(op1.value) + parseInt(op2.value);
+  result.value = parseFloat(op1.value) + parseFloat(op2.value);
 }
 
 function subtract (event){
   event.preventDefault();
-  result.value = parseInt(op1.value) - parseInt(op2.value);
+  result.value = parseFloat(op1.value) - parseFloat(op2.value);
 }
 
 function multiply (event){
   event.preventDefault();
-  result.value = parseInt(op1.value) * parseInt(op2.value);
+  result.value = parseFloat(op1.value) * parseFloat(op2.value);
 }
 
 function divide (event){
   event.preventDefault();
-  result.value = parseInt(op1.value) / parseInt(op2.value);
+  result.value = parseFloat(op1.value) / parseFloat(op2.value);
 }
 
 </script>

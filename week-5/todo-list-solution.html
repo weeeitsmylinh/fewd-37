@@ -25,6 +25,7 @@ function newTodo(event){
   newLi.appendChild(newCheckbox);
   newLi.appendChild(newSpan);
   newSpan.textContent = newTodo.value;
+  newTodo.value = "";
 }
 
 
@@ -90,6 +91,6 @@ function newTodo(event){
 
   input:checked + span {
     color: rgb(220,220,220);
-    text-decoration: line-through;
+    text-decoration: line-through; /*the span right next to it*/
   }
 </style>
