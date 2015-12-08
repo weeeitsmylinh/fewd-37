@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style media="screen">
+      .light{
+        background-color: rgb(235,197,4);
+        height: 200px;
+        width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+        display: flex;
+
+      }
+      .circle{
+        border-radius: 50%;
+        background-color: rgb(83,70,5);
+        height: 150px;
+        width: 150px;
+        margin: 25px;
+        box-shadow: inset 0px 10px 0px 0px black;
+      }
+
+      .light#red{
+        margin-top: 50px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+
+      .light#green{
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <section class="button">
+      <button type="button" name="button" class="stop">Stop</button>
+      <button type="button" name="button" class="slow">Slow</button>
+      <button type="button" name="button" class="go">Go</button>
+      <button type="button" name="button" class="caution">Caution</button>
+    </section>
+
+    <div class="light" id="red">
+      <div class="circle red">
+      </div>
+    </div>
+
+    <div class="light" id="yellow">
+      <div class="circle yellow">
+      </div>
+    </div>
+
+    <div class="light" id="green">
+      <div class="circle green">
+      </div>
+    </div>
+
+  </body>
+
+  <script type="text/javascript">
+
+  var stopButton = document.querySelector(".stop")
+  stopButton.addEventListener("click",clickStopLight);
+  var slowButton = document.querySelector(".slow")
+  slowButton.addEventListener("click",clickSlowLight);
+  var goButton = document.querySelector(".go")
+  goButton.addEventListener("click",clickGoLight);
+
+  function clickStopLight (event){
+    event.preventDefault();
+    var stopLight = document.querySelector(".circle.red");
+    stopLight.style.background = "red";
+    var slowLight = document.querySelector(".circle.yellow");
+    slowLight.style.background = "rgb(83,70,5)";
+    var goLight = document.querySelector(".circle.green");
+    goLight.style.background = "rgb(83,70,5)";
+
+  }
+
+  function clickSlowLight (event){
+    event.preventDefault();
+    var slowLight = document.querySelector(".circle.yellow");
+    slowLight.style.background = "yellow";
+    var stopLight = document.querySelector(".circle.red");
+    stopLight.style.background = "rgb(83,70,5)";
+    var goLight = document.querySelector(".circle.green");
+    goLight.style.background = "rgb(83,70,5)";
+  }
+
+  function clickGoLight (event){
+    event.preventDefault();
+    var goLight = document.querySelector(".circle.green");
+    goLight.style.background = "green";
+    var stopLight = document.querySelector(".circle.red");
+    stopLight.style.background = "rgb(83,70,5)";
+    var slowLight = document.querySelector(".circle.yellow");
+    slowLight.style.background = "rgb(83,70,5)";
+  }
+
+
+  var cautionButton = document.querySelector(".caution")
+  cautionButton.addEventListener("click",changeColor);
+
+  function changeColor(event) {
+    var blinking = setInterval(toggleSlow,1000);
+  }
+
+  function toggleSlow(){
+    var slowLight = document.querySelector(".circle.yellow");
+    slowLight.style.background = "yellow";
+  }
+
+  </script>
+</html>
