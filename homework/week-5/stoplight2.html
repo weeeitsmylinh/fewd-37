@@ -84,32 +84,40 @@
 
   var stopButton = document.querySelector(".stop")
   stopButton.addEventListener("click",clickStopLight);
+
   var slowButton = document.querySelector(".slow")
   slowButton.addEventListener("click",clickSlowLight);
   var goButton = document.querySelector(".go")
   goButton.addEventListener("click",clickGoLight);
   var cautionButton = document.querySelector(".caution")
   cautionButton.addEventListener("click",blinking);
+  var blink;
+
+  var stopLight = document.querySelector(".light-stop");
+  var goLight = document.querySelector(".light-go");
+  var slowLight = document.querySelector(".light-slow");
+
+
+
 
   function clickStopLight (event){
      event.preventDefault();
      var stopLight = document.querySelector(".light-stop");
      stopLight.classList.add("red-light-on");
+     window.clearInterval(blink);
 
-     var slowLight = document.querySelector(".light-slow");
      slowLight.classList.remove("yellow-light-on");
-     var goLight = document.querySelector(".light-go");
      goLight.classList.remove("green-light-on");
+
    }
 
    function clickSlowLight (event){
       event.preventDefault();
       var slowLight = document.querySelector(".light-slow");
       slowLight.classList.add("yellow-light-on");
+      window.clearInterval(blink);
 
-      var stopLight = document.querySelector(".light-stop");
       stopLight.classList.remove("red-light-on");
-      var goLight = document.querySelector(".light-go");
       goLight.classList.remove("green-light-on");
     }
 
@@ -117,10 +125,9 @@
        event.preventDefault();
        var goLight = document.querySelector(".light-go");
        goLight.classList.add("green-light-on");
+       window.clearInterval(blink);
 
-       var stopLight = document.querySelector(".light-stop");
        stopLight.classList.remove("red-light-on");
-       var slowLight = document.querySelector(".light-slow");
        slowLight.classList.remove("yellow-light-on");
 
      }
@@ -130,8 +137,12 @@ function toggleSlow(){
   slowLight.classList.toggle("yellow-light-on");
 }
 function blinking(event){
-  var blink = setInterval(toggleSlow,500);
+  blink = setInterval(toggleSlow,500);
 }
+
+// function clear(event){
+//   blink = clearInterval(toggleSlow);
+// }
 
   // function clickStopLight (event){
   //   event.preventDefault();

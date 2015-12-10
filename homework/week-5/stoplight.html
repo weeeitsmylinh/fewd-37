@@ -108,7 +108,17 @@
 
 
   var cautionButton = document.querySelector(".caution")
-  cautionButton.addEventListener("click",changeColor);
+  cautionButton.addEventListener("click",blinking);
+
+
+  function toggleSlow(){
+    var slowLight = document.querySelector(".circle.yellow");
+    slowLight.style.background = "yellow";
+    slowLight.classList.toggle("yellow-light-on");
+  }
+  function blinking(event){
+    var blink = setInterval(toggleSlow,500);
+  }
 
   function changeColor(event) {
     var blinking = setInterval(toggleSlow,1000);

@@ -16,55 +16,32 @@ var howl = new Howl({
 });
 
 
-c = document.querySelector("#C");
-d = document.querySelector("#D");
-e = document.querySelector("#E");
-f = document.querySelector("#F");
-g = document.querySelector("#G");
-a = document.querySelector("#A");
-b = document.querySelector("#B");
+// c = document.querySelector("#C");
+// d = document.querySelector("#D");
+// e = document.querySelector("#E");
+// f = document.querySelector("#F");
+// g = document.querySelector("#G");
+// a = document.querySelector("#A");
+// b = document.querySelector("#B");
+//
+// c.addEventListener("click", playNote);
+// d.addEventListener("click", playNote);
+// e.addEventListener("click", playNote);
+// f.addEventListener("click", playNote);
+// g.addEventListener("click", playNote);
+// a.addEventListener("click", playNote);
+// b.addEventListener("click", playNote);
 
-c.addEventListener("click", playC);
-d.addEventListener("click", playD);
-e.addEventListener("click", playE);
-f.addEventListener("click", playF);
-g.addEventListener("click", playG);
-a.addEventListener("click", playA);
-b.addEventListener("click", playB);
+var keys = document.querySelectorAll(".keys")
 
-function playC(event) {
-  event.preventDefault();
-  howl.play("C")
+for (var i = 0; i < keys.length; i++) {
+  console.log(i, keys[i]);
+  keys[i].addEventListender("click", playNote);
 }
 
-function playD(event) {
+function playNote(event) {
   event.preventDefault();
-  howl.play("D")
-}
-
-function playE(event) {
-  event.preventDefault();
-  howl.play("E")
-}
-
-function playF(event) {
-  event.preventDefault();
-  howl.play("F")
-}
-
-function playG(event) {
-  event.preventDefault();
-  howl.play("G")
-}
-
-function playA(event) {
-  event.preventDefault();
-  howl.play("A")
-}
-
-function playB(event) {
-  event.preventDefault();
-  howl.play("B")
+  howl.play(event.target.getAttribute("id"))
 }
 
 
