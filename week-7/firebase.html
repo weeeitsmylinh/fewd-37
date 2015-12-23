@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+
+    <script type="text/javascript">
+      var firebase = new Firebase("https://blinding-inferno-7422.firebaseio.com");
+
+      firebase.push({
+        username: "your-name",
+        messageBody: "say something interesting"
+      })
+      firebase.on('child_added', function (snapshot) {
+        var data = snapshot.val();
+        console.log(data);
+
+  });
+    </script>
+
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+creating a chat message;
+1. add a form
+2. listen to the form submit (addEventListener)
+3. when form is sunmitted, save to firebase >>> firebase.push({....})
+4. prevent default
+5. reset the form (maybe even focus on the text box)
+
+
+Display chat message:
+1. Subscribe to Firebase "child_added" event
+2. When a child is added, the call a function
+
+firebase.on('child_added', function (snapshot) {
+
+3. Create a div (or li) to contain the message
+4. use the messagebody from firebase to set the text content
+
+(I have to have this part in my code)
+--------
+var message = snapshot.val(); // looks like {
+  messageBody: "yo yo!",
+  username: "avand"
+}
+}
+--------
+
+var messageItem = document.createElement("li");
+messageItem.textContent = message.messageBody;
+
+5. append the div (or li) to a parent

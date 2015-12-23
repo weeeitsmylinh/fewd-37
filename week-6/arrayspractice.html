@@ -54,12 +54,21 @@ for (var i = 0; i < students.length; i++) {
 var listName = document.createElement("li")
 parent.appendChild(listName);
 listName.textContent = students[i];
-
-
-
-
 }
 
+
+//another way of doing it
+
+// function addToList(name) {
+// 	var ol = document.querySelector("ol");
+// 	var li = document.createElement("li");
+// 	ol.appendChild(li);
+// 	li.textContent = name;
+// }
+//
+// for (var i = 0; i < students.length; i++) {
+// 	addToList(students[i]);
+// }
 
 // Your code goes here:
 // 1. Add each student to the main <ol>

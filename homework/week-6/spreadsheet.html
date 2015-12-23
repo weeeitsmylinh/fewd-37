@@ -1,0 +1,113 @@
+<style>
+body {
+  font-family: sans-serif;
+  margin: 2em 4em;
+}
+table {
+  margin-bottom: 1em;
+}
+td {
+  border: 1px solid #ccc;
+  padding: 1em;
+}
+button {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom-width: 2px;
+  border-radius: 5px; font-size: inherit;
+  color: white;
+  background-color: #049cd8;
+  padding: .5em 1em;
+  cursor: pointer;
+}
+</style>
+
+<h1>Spreadsheet</h1>
+
+<table>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td contenteditable>Avand</td>
+      <td contenteditable>Instructor</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td contenteditable>Sandi</td>
+      <td contenteditable>TA</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td contenteditable>Yana</td>
+      <td contenteditable>Student</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td contenteditable>Maks</td>
+      <td contenteditable>Student</td>
+    </tr>
+  </tbody>
+</table>
+
+<button id="add-row">Add a Row</button>
+<button id="add-column">Add a Column</button>
+
+<script>
+var rowButton = document.querySelector("#add-row")
+rowButton.addEventListener("click",addRow)
+
+function addRow(event){
+  console.log("hi!");
+  event.preventDefault();
+
+  var tdCount = document.querySelectorAll("tr:last-child td").length
+  var tbody = document.querySelector("tbody");
+  var newTr = document.createElement("tr")
+  tbody.appendChild(newTr);
+
+  for (var i = 0; i < tdCount; i++) {
+    var newTd = document.createElement("td");
+    newTr.appendChild(newTd);
+    // if (i==0){
+    //
+    // }
+  }
+
+}
+
+var columnButton = document.querySelector("#add-column");
+columnButton.addEventListener("click",addColumn);
+
+function addColumn(event){
+  console.log("hi!");
+  event.preventDefault();
+
+  var rows = document.querySelectorAll("tbody tr");
+
+  for (var i = 0; i < rows.length; i++) {
+    var newTd = document.createElement("td");
+    rows[i].appendChild(newTd);
+  }
+
+
+  //
+  //
+  // var tdCount = document.querySelectorAll("tr:last-child td").length
+  //
+  //
+  // for (var i = 0; i < tdCount; i++) {
+  //   var tr = document.querySelector("tr");
+  //   var newTd = document.createElement("td")
+  //   tr.appendChild(newTd);
+    // if (i==0){
+    //
+    // }
+  }
+
+
+//
+// for (var i = 0; i < array.length; i++) {
+//   array[i]
+// }
+
+
+</script>

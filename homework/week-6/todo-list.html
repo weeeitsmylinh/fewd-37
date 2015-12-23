@@ -11,55 +11,30 @@
 <script>
 
 var createButton = document.querySelector("button");
-createButton.addEventListener("click",newTodo);
+createButton.addEventListener("click",addTodo);
+var newTodo = document.querySelector("#new-todo-item-input");
+var getUl = document.querySelector("#todo-list");
 
-function newTodo(event){
+
+
+function addTodo(event){
   event.preventDefault();
-  var newTodo = document.querySelector("#new-todo-item-input");
-  var getUl = document.querySelector("#todo-list");
-  var newLi = document.createElement("li");
-  var newCheckbox = document.createElement("input");
-  var newSpan = document.createElement("span")
-  newCheckbox.setAttribute("type","checkbox");
-  getUl.appendChild(newLi);
-  newLi.appendChild(newCheckbox);
-  newLi.appendChild(newSpan);
-  newSpan.textContent = newTodo.value;
-  newTodo.value = "";
-}
-
-// function createItem(todoText){
-//   var list
-// }
-
-//1. Get text box
-//2. Get text box content
-//4. Create new li
-//5. Append text box content to li
-
-
-// --------
-
-
-function formSubmitted(event){
-  event.preventDefault();
-  var todos = input.value.split(",");
+  var todos = newTodo.value.split(", ");
 
   for (var i = 0; i < todos.length; i++) {
-    createItem(todos[i]);
+    var newLi = document.createElement("li");
+    var newCheckbox = document.createElement("input");
+    var newSpan = document.createElement("span");
+    newSpan.textContent = todos[i];
+    newCheckbox.setAttribute("type","checkbox");
+    getUl.appendChild(newLi);
+    newLi.appendChild(newCheckbox);
+    newLi.appendChild(newSpan);
   }
-  form.reset();
-}
-// document.querySelector("#new-todo-item")
-// document.querySelector("new-todo-item").value
-// //this equals "homework, exercise" (whatever you put in the box)
-// array = document.querySelector("#new-todo-item-input").value.split(", ")
-// //this splits the list by a comma
-//
-// for (var i = 0; i < array.length; i++) {
-//   newTodo(array[i])
-// }
 
+  newTodo.value = "";
+
+}
 
 </script>
 
