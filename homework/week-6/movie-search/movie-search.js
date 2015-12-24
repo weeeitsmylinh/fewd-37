@@ -33,7 +33,7 @@ function resultsReceived(results) {
        var poster = document.createElement("img");
        li.appendChild(poster);
        poster.setAttribute("src", moviePoster);
-       
+
        //make title
        var title = document.createElement("div");
        title.className = "movie-title";
