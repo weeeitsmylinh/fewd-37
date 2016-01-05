@@ -1,5 +1,6 @@
 // Handle the form submission: go to OMDB and get results
 $("#movie-search-form").submit(formSubmitted);
+var searchBox = document.querySelector("#query");
 
 //Gets IMDB data
 function formSubmitted(event) {
@@ -10,6 +11,7 @@ function formSubmitted(event) {
 
 //creates movie list
 function resultsReceived(results) {
+
 
   for (var i = 0; i < results["Search"].length; i++) {
 
@@ -49,6 +51,7 @@ function resultsReceived(results) {
        li.appendChild(releaseDate);
        releaseDate.textContent = movieYear;
 
+       searchBox.value = "";
 
      }
    }
