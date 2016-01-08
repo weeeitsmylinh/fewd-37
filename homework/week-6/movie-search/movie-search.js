@@ -7,6 +7,9 @@ function formSubmitted(event) {
   event.preventDefault();
   var url = "http://omdbapi.com/?s=" + $("#query").val();
   $.get(url, resultsReceived);
+  $('li').remove();
+  document.getElementById("movie-search-form").reset();
+
 }
 
 //creates movie list
@@ -41,7 +44,7 @@ function resultsReceived(results) {
        title.className = "movie-title";
        li.appendChild(title);
        var titleLink = document.createElement('a');
-       titleLink.setAttribute("href","www.imdb.com/title/"+movieID);
+       titleLink.setAttribute("href","http://www.imdb.com/title/"+movieID);
        title.appendChild(titleLink);
        titleLink.textContent = movieTitle;
 
