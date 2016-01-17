@@ -1,0 +1,98 @@
+body{
+  padding: 0px;
+  margin: 0px;
+  background-color: #a0c6ec;
+}
+
+#menu{
+  position: fixed;
+  background-color: #b08f04;
+  left: -200px;
+  width: 200px;
+  height: 100%;
+  transition: 1s;
+  font-family: Arial;
+  font-size: 20px;
+  color: #FFFFFF;
+  padding-top: 20px;
+}
+
+#cheat-mode{
+  margin-right:7px;
+}
+
+ul{
+  list-style: none;
+  margin-left: 20px;
+  padding: 0;
+  text-align: left;
+}
+
+li{
+    margin-bottom: 10px;
+}
+
+#content{
+  left: 0px;
+  position: fixed;
+  transition: 1s;
+  width: 100%;
+  height: 100%;
+  color: #FFFFFF;
+}
+
+#nav-button{
+  float: left;
+  height: 40px;
+  padding: 0px;
+  margin-top: 15px
+}
+
+header{
+  font-family: Arial;
+  font-size: 50px;
+  color: white;
+  height: 70px;
+  width: 100%;
+  background-color: #4280bf;
+  padding: 10px;
+  margin: 0px;
+  text-align: center;
+  position: relative;
+}
+
+#title{
+  padding: 0px;
+  margin-top: 5px;
+}
+
+#start-game{
+  font-family: Arial;
+  font-size: 30px;
+  color: #FFFFFF;
+  height: 50px;
+  width: 100%;
+  background-color: #a0c6ec;
+  padding: 0px;
+  margin-top: 10px;
+  border: none;
+  text-align: center;
+}
+
+#country-name {
+  font-family: Arial;
+  font-size: 40px;
+  color: #b08f04;
+  height: 50px;
+  width: 100%;
+  background-color: #a0c6ec;
+  padding: 0px;
+  margin-bottom: 20px;
+  text-align: center;
+
+}
+
+#world-map {
+  width: 100%;
+  height: 500px;
+}

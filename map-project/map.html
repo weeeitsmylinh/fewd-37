@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jVectorMap demo</title>
+  <link rel="stylesheet" href="jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="map.css" type="text/css" media="screen"/>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="jquery-jvectormap-2.0.3.min.js"></script>
+  <script src="jquery-jvectormap-world-mill-en.js"></script>
+  <!-- <script src="map.js"></script> -->
+</head>
+
+<body>
+
+  <nav id="menu" class="panel">
+  <ul>
+    <li id="menu-close">Close Menu<li>
+    <li><input type="checkbox" name="name" id="cheat-mode">Cheat Mode</li>
+    <li>Link 2</li>
+    <li>Link 3</li>
+  </ul>
+  </nav>
+
+  <div id="content">
+    <header>
+    <img src="images/menu.svg" id="nav-button" alt="menu"/>
+    <span id="title">Find That Country!</span>
+    </header>
+    <div id="start-game"> Start Game</div>
+
+    <div id="country-name">
+
+    </div>
+
+
+    <div id="world-map"></div>
+  <div>
+
+</body>
+
+<script type="text/javascript">
+
+//nav menu animation
+var nav = document.querySelector("#nav-button");
+nav.addEventListener("click",clickNavButton);
+var navMenu = document.querySelector("#menu");
+var content = document.querySelector("#content");
+
+function clickNavButton(event){
+  navMenu.style.left = "0px";
+  content.style.left = "200px";
+}
+
+var closeMenu = document.querySelector("#menu-close");
+closeMenu.addEventListener("click",closeNav);
+
+function closeNav(event){
+  navMenu.style.left = "-200px";
+  content.style.left = "0px";
+}
+
+//define map arrays
+var countryListName = ["Bangladesh", "Belgium", "Burkina Faso", "Bulgaria", "Bosnia and Herz.", "Brunei", "Bolivia", "Japan", "Burundi", "Benin", "Bhutan", "Jamaica", "Botswana", "Brazil", "Bahamas", "Belarus", "Belize", "Russia", "Rwanda", "Serbia", "Timor-Leste", "Turkmenistan", "Tajikistan", "Romania", "Guinea-Bissau", "Guatemala", "Greece", "Eq. Guinea", "Guyana", "Georgia", "United Kingdom", "Gabon", "Guinea", "Gambia", "Greenland", "Ghana", "Oman", "Tunisia", "Jordan", "Croatia", "Haiti", "Hungary", "Honduras", "Puerto Rico", "Palestine", "Portugal", "Paraguay", "Panama", "Papua New Guinea", "Peru", "Pakistan", "Philippines", "Poland", "Zambia", "W. Sahara", "Estonia", "Egypt", "South Africa", "Ecuador", "Italy", "Vietnam", "Solomon Is.", "Ethiopia", "Somalia", "Zimbabwe", "Spain", "Eritrea", "Montenegro", "Moldova", "Madagascar", "Morocco", "Uzbekistan", "Myanmar", "Mali", "Mongolia", "Macedonia", "Malawi", "Mauritania", "Uganda", "Malaysia", "Mexico", "Israel", "France", "Somaliland", "Finland", "Fiji", "Falkland Is.", "Nicaragua", "Netherlands", "Norway", "Namibia", "Vanuatu", "New Caledonia", "Niger", "Nigeria", "New Zealand", "Nepal", "Kosovo", "Côte d'Ivoire", "Switzerland", "Colombia", "China", "Cameroon", "Chile", "N. Cyprus", "Canada", "Congo", "Central African Rep.", "Dem. Rep. Congo", "Czech Rep.", "Cyprus", "Costa Rica", "Cuba", "Swaziland", "Syria", "Kyrgyzstan", "Kenya", "S. Sudan", "Suriname", "Cambodia", "El Salvador", "Slovakia", "South Korea", "Slovenia", "Dem. Rep. Korea", "Kuwait", "Senegal", "Sierra Leone", "Kazakhstan", "Saudi Arabia", "Sweden", "Sudan", "Dominican Rep.", "Djibouti", "Denmark", "Germany", "Yemen", "Algeria", "United States", "Uruguay", "Lebanon", "Lao PDR", "Taiwan", "Trinidad and Tobago", "Turkey", "Sri Lanka", "Latvia", "Lithuania", "Luxembourg", "Liberia", "Lesotho", "Thailand", "Fr. S. Antarctic Lands", "Togo", "Chad", "Libya", "United Arab Emirates", "Venezuela", "Afghanistan", "Iraq", "Iceland", "Iran", "Armenia", "Albania", "Angola", "Argentina", "Australia", "Austria", "India", "Tanzania", "Azerbaijan", "Ireland", "Indonesia", "Ukraine", "Qatar", "Mozambique"];
+var countryListAbbrev = ["BD", "BE", "BF", "BG", "BA", "BN", "BO", "JP", "BI", "BJ", "BT", "JM", "BW", "BR", "BS", "BY", "BZ", "RU", "RW", "RS", "TL", "TM", "TJ", "RO", "GW", "GT", "GR", "GQ", "GY", "GE", "GB", "GA", "GN", "GM", "GL", "GH", "OM", "TN", "JO", "HR", "HT", "HU", "HN", "PR", "PS", "PT", "PY", "PA", "PG", "PE", "PK", "PH", "PL", "ZM", "EH", "EE", "EG", "ZA", "EC", "IT", "VN", "SB", "ET", "SO", "ZW", "ES", "ER", "ME", "MD", "MG", "MA", "UZ", "MM", "ML", "MN", "MK", "MW", "MR", "UG", "MY", "MX", "IL", "FR", "XS", "FI", "FJ", "FK", "NI", "NL", "NO", "NA", "VU", "NC", "NE", "NG", "NZ", "NP", "XK", "CI", "CH", "CO", "CN", "CM", "CL", "XC", "CA", "CG", "CF", "CD", "CZ", "CY", "CR", "CU", "SZ", "SY", "KG", "KE", "SS", "SR", "KH", "SV", "SK", "KR", "SI", "KP", "KW", "SN", "SL", "KZ", "SA", "SE", "SD", "DO", "DJ", "DK", "DE", "YE", "DZ", "US", "UY", "LB", "LA", "TW", "TT", "TR", "LK", "LV", "LT", "LU", "LR", "LS", "TH", "TF", "TG", "TD", "LY", "AE", "VE", "AF", "IQ", "IS", "IR", "AM", "AL", "AO", "AR", "AU", "AT", "IN", "TZ", "AZ", "IE", "ID", "UA", "QA", "MZ"];
+var countryRegion =['Asia', 'Europe', 'Africa', 'Europe', 'Africa', 'Caribbean', 'South America', 'Asia', 'Oceania', 'Europe', 'Asia', 'Middle East', 'Asia', 'Caribbean', 'Europe', 'Europe', 'Central America', 'Africa', 'Asia', 'South America', 'Europe', 'Africa', 'South America', 'Asia', 'Europe', 'Africa', 'Africa', 'Asia', 'Africa', 'North America', 'Africa', 'Africa', 'South America', 'Asia', 'South America', 'Central America', 'Europe', 'Caribbean', 'Middle East', 'Europe', 'Africa', 'Europe', 'Africa', 'Caribbean', 'Caribbean', 'Asia', 'South America', 'Middle East', 'Central America', 'Africa', 'Africa', 'Europe', 'Africa', 'South America', 'Oceania', 'Oceania', 'Europe', 'Europe', 'South America', 'Africa', 'Africa', 'Asia', 'Europe', 'Africa', 'Europe', 'North America', 'Caribbean', 'Central America', 'Africa', 'Africa', 'South America', 'Caribbean', 'Central America', 'Europe', 'Europe', 'Asia', 'Asia', 'Middle East', 'Middle East', 'Europe', 'Middle East', 'Europe', 'Africa', 'Caribbean', 'Asia', 'Middle East', 'Asia', 'Africa', 'Oceania', 'Europe', 'Middle East', 'Asia', 'Asia', 'Europe', 'Middle East', 'Africa', 'Africa', 'Africa', 'Europe', 'Europe', 'Europe', 'Europe', 'Africa', 'Africa', 'Asia', 'Asia', 'Africa', 'Europe', 'Oceania', 'Africa', 'Africa', 'Central America', 'Europe', 'Europe', 'Asia', 'Europe', 'Africa', 'Africa', 'Asia', 'Africa', 'Oceania', 'Asia', 'Europe', 'Oceania', 'Oceania', 'Central America', 'Africa', 'Africa', 'Asia', 'Europe', 'Europe', 'Middle East', 'Asia', 'Oceania', 'Central America', 'Oceania', 'South America', 'South America', 'Asia', 'Europe', 'Europe', 'Caribbean', 'Middle East', 'Europe', 'Africa', 'Europe', 'Europe', 'Africa', 'Caribbean', 'Caribbean', 'Caribbean', 'Europe', 'Africa', 'Middle East', 'Africa', 'Africa', 'Africa', 'Asia', 'Europe', 'Europe', 'Oceania', 'Africa', 'Africa', 'Africa', 'Asia', 'Africa', 'Europe', 'Asia', 'Africa', 'South America', 'Africa', 'Europe', 'Europe', 'Middle East', 'Asia', 'Asia', 'Africa', 'Asia', 'Caribbean', 'Africa', 'Oceania', 'Caribbean', 'Africa', 'Middle East', 'Asia', 'Oceania', 'Africa', 'Europe', 'Middle East', 'Europe', 'North America', 'South America', 'Asia', 'Oceania', 'Europe', 'South America', 'Asia', 'Middle East', 'Africa', 'Middle East', 'Africa', 'Africa'];
+var index;
+
+var startGame = document.querySelector("#start-game");
+startGame.addEventListener("click",clickStartGame);
+
+function clickStartGame(event) {
+  console.log("start!")
+  index = getRandomIndex();
+  countryIndexCode = getCurrentAbbrev();
+  getCurrentName();
+}
+
+function getRandomIndex() {
+  return Math.floor(Math.random() * countryListName.length);
+
+  // var randomNumber = Math.floor(Math.random() * countryListName.length);
+  // var usedNumbers = randomNumber.push();
+
+  // var randomNumber = Math.floor(Math.random() * countryListName.length);
+  // push()
+}
+
+function getCurrentName(){
+  var guessCountry = countryListName[index];
+  guessCountryDiv = document.querySelector("#country-name");
+  guessCountryDiv.textContent = guessCountry;
+}
+
+function getCurrentAbbrev() {
+   return countryListAbbrev[index];
+}
+
+//outsome responses
+var correct = ["Yay! Great job!", "Correct! Try another!", "Wow! You're a geographical genius!"];
+var wrong = ["Nope! Try again","Sorry...try again","Hmm you're not great at this"];
+
+
+//puts map on page + selecting functions
+$(function(){
+  window.map = new jvm.Map({
+    container: $("#world-map"),
+
+  //allows for regions to be selected
+  regionsSelectable: false,
+
+  //set attribute for regions selected
+  regionStyle: {
+    selected: {
+      fill: '#b08f04'
+    }
+  },
+
+
+
+  //cheat mode - shows country tags if checked
+  onRegionTipShow: function(e, el, code){
+    var checkbox = document.querySelector("#cheat-mode");
+    if (checkbox.checked == true){
+          return true;
+        }
+      else{
+
+            return false;
+          }
+        },
+
+  //if correct country is clicked, set as selected
+  onRegionClick: function(e, code) {
+    if (code == getCurrentAbbrev()) {
+      startGame.textContent = correct[Math.floor(Math.random() * correct.length)];
+      startGame.style.pointerEvents = "none";
+      startGame.style.color = "white";
+      map.setSelectedRegions(code);
+      clickStartGame();
+
+    } else {
+      startGame.textContent = wrong[Math.floor(Math.random() * wrong.length)];
+      startGame.style.color = "red";
+      startGame.style.pointerEvents = "none";
+
+        // regionStyle:{
+        //   selected hover: {
+        //     fill: "white";
+        //   }
+        // }
+
+        // regionStyle:{
+        //   selectedHover: {
+        //     fill: "red";
+        //   }
+        // }
+
+
+
+
+      }
+    },
+
+    // onRegionSelected: function(e, code, isSelected, selectedRegions) {
+    //   console.log(e, code, isSelected, selectedRegions)
+    //
+    //
+    // }
+  });
+});
+</script>
+</html>
