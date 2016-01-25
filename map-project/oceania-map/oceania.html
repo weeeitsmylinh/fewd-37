@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Find That Country!</title>
+  <link rel="stylesheet" href="../jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="../map.css" type="text/css" media="screen"/>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="../jquery-jvectormap-2.0.3.min.js"></script>
+  <script src="jquery-jvectormap-oceania-mill.js"></script>
+</head>
+
+<body>
+
+  <nav id="menu" class="panel">
+    <ul>
+      <li><input type="checkbox" name="name" id="cheat-mode">Cheat Mode</li>
+      <li><a href="../world-map/world.html">World Map</a></li>
+      <li><a href="../africa-map/africa.html">Africa</a></li>
+      <li><a href="../asia-map/asia.html">Asia</a></li>
+      <li><a href="../europe-map/europe.html">Europe</a></li>
+      <li><a href="../north-america-map/north-america.html">North America</a></li>
+      <li><a href="oceania.html">Oceania</a></li>
+      <li><a href="../south-america-map/south-america.html">South America</a></li>
+    </ul>
+  </nav>
+
+  <div id="content">
+
+    <header>
+      <img src="../images/menu.svg" id="nav-button" alt="menu"/>
+      <span id="title">Find That Country!</span>
+    </header>
+
+    <div id="start-game"> Start Game</div>
+    <div id="guesses"># of Guesses: <span id="guess-counter">0</span></div>
+    <div id="country-name"></div>
+
+    <div id="container">
+      <div id="transparent"></div>
+      <div id="map"></div>
+    </div>
+  <div>
+
+</body>
+
+<script type="text/javascript">
+
+
+//nav menu animation
+var nav = document.querySelector("#nav-button");
+nav.addEventListener("click",clickNavButton);
+var navMenu = document.querySelector("#menu");
+var content = document.querySelector("#content");
+
+function clickNavButton(event){
+  var open = navMenu.style.left == "0px";
+  var close = navMenu.style.left == "-200px";
+
+  if (open == true) {
+    navMenu.style.left = "-200px";
+    content.style.left = "0px";
+
+  }
+  else {
+    navMenu.style.left = "0px";
+    content.style.left = "200px";
+  }
+}
+
+//define map arrays
+// "Saint Lucia", "LC", too small!
+var countryListName = ["Guam",	"Palau",	"Kiribati",	"New Caledonia",	"Niue",	"New Zealand",	"Australia",	"Papua New Guinea",	"Solomon Is.",	"Fr. Polynesia",	"Fiji",	"Micronesia",	"Samoa",	"Vanuatu"];
+var countryListAbbrev = ["GU",	"PW",	"KI",	"NC",	"NU",	"NZ",	"AU",	"PG",	"SB",	"PF",	"FJ",	"FM",	"WS",	"VU"];
+var index;
+
+
+//start game
+var startGame = document.querySelector("#start-game");
+startGame.addEventListener("click",clickStartGame);
+
+function clickStartGame(event) {
+  console.log("start!")
+  index = getRandomIndex();
+  countryIndexCode = getCurrentAbbrev();
+  getCurrentName();
+  removeTransparentDiv();
+}
+
+function getRandomIndex() {
+  return Math.floor(Math.random() * countryListName.length);
+}
+
+
+function getCurrentName(){
+  var guessCountry = countryListName[index];
+  guessCountryDiv = document.querySelector("#country-name");
+  guessCountryDiv.textContent = guessCountry;
+}
+
+function getCurrentAbbrev() {
+   return countryListAbbrev[index];
+}
+
+function removeTransparentDiv(){
+  var div = document.querySelector("#transparent");
+  div.remove();
+}
+
+//outcome responses
+var correct = ["Yay! Great job!", "Correct! Try another!", "Wow! You're a geographical genius!"];
+var wrong = ["Nope! Try again","Sorry...try again","Hmm you're not great at this"];
+
+//number of guesses
+var guessCounter = document.querySelector("#guess-counter");
+
+
+function guessIncorrectly(){
+  var startingCount = guessCounter.textContent;
+  var addGuess = parseInt(startingCount) + 1;
+  guessCounter.textContent = addGuess;
+}
+
+//puts map on page + selecting functions
+$(function(){
+  map = new jvm.Map({
+         map: 'oceania_mill',
+         container: $("#map"),
+
+  //set attribute for regions selected
+  regionStyle: {
+    selected: {
+      fill: '#b08f04'
+    }
+  },
+
+  //cheat mode - shows country tags if checked
+  onRegionTipShow: function(e, el, code){
+    var checkbox = document.querySelector("#cheat-mode");
+    if (checkbox.checked == true){
+          return true;
+        }
+      else{
+
+            return false;
+          }
+        },
+
+  //if correct country is clicked, set as selected
+  onRegionClick: function(e, code) {
+    if (code == getCurrentAbbrev()) {
+      startGame.textContent = correct[Math.floor(Math.random() * correct.length)];
+      startGame.style.pointerEvents = "none";
+      startGame.style.color = "white";
+      map.setSelectedRegions(code);
+      guessCounter.textContent = "0";
+      countryListName.splice(index, 1);
+      countryListAbbrev.splice(index, 1);
+      clickStartGame();
+
+
+
+    } else {
+      startGame.textContent = wrong[Math.floor(Math.random() * wrong.length)];
+      startGame.style.color = "#a11f1f";
+      startGame.style.pointerEvents = "none";
+      guessIncorrectly();
+
+      }
+    },
+
+  });
+});
+</script>
+</html>
