@@ -80,9 +80,6 @@ header{
   text-align: center;
 }
 
-#info{
-}
-
 #country-name {
   font-family: Arial;
   font-size: 40px;
@@ -121,7 +118,7 @@ header{
 
 #map {
   width: 100%;
-  height: 60%;
+  height: 65%;
   z-index: 1;
   position: absolute;
 }

@@ -44,81 +44,13 @@
 
 </body>
 
+<script src="../map.js"></script>
 <script type="text/javascript">
-
-
-//nav menu animation
-var nav = document.querySelector("#nav-button");
-nav.addEventListener("click",clickNavButton);
-var navMenu = document.querySelector("#menu");
-var content = document.querySelector("#content");
-
-function clickNavButton(event){
-  var open = navMenu.style.left == "0px";
-  var close = navMenu.style.left == "-200px";
-
-  if (open == true) {
-    navMenu.style.left = "-200px";
-    content.style.left = "0px";
-
-  }
-  else {
-    navMenu.style.left = "0px";
-    content.style.left = "200px";
-  }
-}
 
 //define map arrays
 var countryListName = ["Bangladesh",	"Mongolia",	"Brunei",	"Bahrain",	"Bhutan",	"Hong Kong",	"Jordan",	"Palestine",	"Lebanon",	"Lao PDR",	"Taiwan",	"Turkey",	"Sri Lanka",	"Timor-Leste",	"Turkmenistan",	"Tajikistan",	"Thailand",	"N. Cyprus",	"Nepal",	"Pakistan",	"Philippines",	"United Arab Emirates",	"China",	"Afghanistan",	"Iraq",	"Japan",	"Iran",	"Armenia",	"Syria",	"Vietnam",	"Georgia",	"Israel",	"India",	"Azerbaijan",	"Indonesia",	"Oman",	"Kyrgyzstan",	"Uzbekistan",	"Myanmar",	"Singapore",	"Cambodia",	"Cyprus",	"Qatar",	"Korea",	"Dem. Rep. Korea",	"Kuwait",	"Kazakhstan",	"Saudi Arabia",	"Malaysia",	"Yemen"];
 var countryListAbbrev = ["BD",	"MN",	"BN",	"BH",	"BT",	"HK",	"JO",	"PS",	"LB",	"LA",	"TW",	"TR",	"LK",	"TL",	"TM",	"TJ",	"TH",	"XC",	"NP",	"PK",	"PH",	"AE",	"CN",	"AF",	"IQ",	"JP",	"IR",	"AM",	"SY",	"VN",	"GE",	"IL",	"IN",	"AZ",	"ID",	"OM",	"KG",	"UZ",	"MM",	"SG",	"KH",	"CY",	"QA",	"KR",	"KP",	"KW",	"KZ",	"SA",	"MY",	"YE"];
 var index;
-
-
-//start game
-var startGame = document.querySelector("#start-game");
-startGame.addEventListener("click",clickStartGame);
-
-function clickStartGame(event) {
-  console.log("start!")
-  index = getRandomIndex();
-  countryIndexCode = getCurrentAbbrev();
-  getCurrentName();
-  removeTransparentDiv();
-}
-
-function getRandomIndex() {
-  return Math.floor(Math.random() * countryListName.length);
-}
-
-
-function getCurrentName(){
-  var guessCountry = countryListName[index];
-  guessCountryDiv = document.querySelector("#country-name");
-  guessCountryDiv.textContent = guessCountry;
-}
-
-function getCurrentAbbrev() {
-   return countryListAbbrev[index];
-}
-
-function removeTransparentDiv(){
-  var div = document.querySelector("#transparent");
-  div.remove();
-}
-
-//outcome responses
-var correct = ["Yay! Great job!", "Correct! Try another!", "Wow! You're a geographical genius!"];
-var wrong = ["Nope! Try again","Sorry...try again","Hmm you're not great at this"];
-
-//number of guesses
-var guessCounter = document.querySelector("#guess-counter");
-
-
-function guessIncorrectly(){
-  var startingCount = guessCounter.textContent;
-  var addGuess = parseInt(startingCount) + 1;
-  guessCounter.textContent = addGuess;
-}
 
 //puts map on page + selecting functions
 $(function(){
