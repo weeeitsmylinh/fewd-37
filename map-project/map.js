@@ -54,8 +54,8 @@ function removeTransparentDiv(){
 }
 
 //outcome responses
-var correct = ["Yay! Great job!", "Correct! Try another!", "Wow! You're a geographical genius!"];
-var wrong = ["Nope! Try again","Sorry...try again","Hmm you're not great at this"];
+var correct = ["Yay! Great job!", "Correct! Try another!", "Wow! You're a geographical genius!", "Congrats!", "I don't know how you do it!", "Did you guess? Doesn't matter, good job!"];
+var wrong = ["Nope! Try again","Sorry...try again","Hmm you're not great at this", "Incorrect...", "I hope you find it soon..."];
 
 //number of guesses
 var guessCounter = document.querySelector("#guess-counter");
