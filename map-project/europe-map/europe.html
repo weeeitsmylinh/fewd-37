@@ -47,60 +47,7 @@
 <script src="../map.js"></script>
 <script type="text/javascript">
 
-//define map arrays
-var countryListName = ["Belgium",	"France",	"Bulgaria",	"Denmark",	"Croatia",	"Germany",	"Bosnia and Herz.",	"Hungary",	"Jersey",	"Finland",	"Belarus",	"Greece",	"Russia",	"Netherlands",	"Portugal",	"Norway",	"Liechtenstein",	"Latvia",	"Lithuania",	"Luxembourg",	"Faeroe Is.",	"Poland",	"Kosovo",	"Switzerland",	"Andorra",	"Estonia",	"Iceland",	"Albania",	"Italy",	"Guernsey",	"Czech Rep.",	"Isle of Man",	"United Kingdom",	"Aland",	"Ireland",	"Spain",	"Montenegro",	"Moldova",	"Romania",	"Serbia",	"Macedonia",	"Slovakia",	"Malta",	"Slovenia",	"San Marino",	"Ukraine",	"Sweden",	"Austria"];
-var countryListAbbrev = ["BE",	"FR",	"BG",	"DK",	"HR",	"DE",	"BA",	"HU",	"JE",	"FI",	"BY",	"GR",	"RU",	"NL",	"PT",	"NO",	"LI",	"LV",	"LT",	"LU",	"FO",	"PL",	"XK",	"CH",	"AD",	"EE",	"IS",	"AL",	"IT",	"GG",	"CZ",	"IM",	"GB",	"AX",	"IE",	"ES",	"ME",	"MD",	"RO",	"RS",	"MK",	"SK",	"MT",	"SI",	"SM",	"UA",	"SE",	"AT"];
-var index;
+var region = "europe";
 
-//puts map on page + selecting functions
-$(function(){
-  map = new jvm.Map({
-         map: 'europe_mill',
-         container: $("#map"),
-
-  //set attribute for regions selected
-  regionStyle: {
-    selected: {
-      fill: '#b08f04'
-    }
-  },
-
-  //cheat mode - shows country tags if checked
-  onRegionTipShow: function(e, el, code){
-    var checkbox = document.querySelector("#cheat-mode");
-    if (checkbox.checked == true){
-          return true;
-        }
-      else{
-
-            return false;
-          }
-        },
-
-  //if correct country is clicked, set as selected
-  onRegionClick: function(e, code) {
-    if (code == getCurrentAbbrev()) {
-      startGame.textContent = correct[Math.floor(Math.random() * correct.length)];
-      startGame.style.pointerEvents = "none";
-      startGame.style.color = "white";
-      map.setSelectedRegions(code);
-      guessCounter.textContent = "0";
-      countryListName.splice(index, 1);
-      countryListAbbrev.splice(index, 1);
-      clickStartGame();
-
-
-
-    } else {
-      startGame.textContent = wrong[Math.floor(Math.random() * wrong.length)];
-      startGame.style.color = "#a11f1f";
-      startGame.style.pointerEvents = "none";
-      guessIncorrectly();
-
-      }
-    },
-
-  });
-});
 </script>
 </html>

@@ -44,6 +44,8 @@ li a{
   width: 100%;
   height: 100%;
   color: #FFFFFF;
+  font-family: Arial;
+
 }
 
 #nav-button{
@@ -129,4 +131,18 @@ header{
   height: 60%;
   background-color: transparent;
   position: absolute;
+}
+
+.congrats{
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 50px;
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  background: rgba(250,250,250,.5);
+  color: black;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }

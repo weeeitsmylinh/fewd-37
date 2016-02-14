@@ -47,61 +47,6 @@
 <script src="../map.js"></script>
 <script type="text/javascript">
 
-//define map arrays
-// "Saint Lucia", "LC", too small!
-var countryListName = ["Puerto Rico",	"Dominican Rep.",	"Dominica",	"Nicaragua",	"Panama",	"Canada",	"El Salvador",	"Haiti",	"Trinidad and Tobago",	"Jamaica",	"Guatemala",	"Honduras",	"Belize",	"Bahamas",	"Costa Rica",	"United States",	"Greenland",	"Mexico",	"Cuba"];
-var countryListAbbrev = ["PR",	"DO",	"DM",	"NI",	"PA",	"CA",	"SV",	"HT",	"TT",	"JM",	"GT",	"HN",	"BZ",	"BS",	"CR",	"US",	"GL",	"MX",	"CU"];
-var index;
-
-//puts map on page + selecting functions
-$(function(){
-  map = new jvm.Map({
-         map: 'north_america_mill',
-         container: $("#map"),
-
-  //set attribute for regions selected
-  regionStyle: {
-    selected: {
-      fill: '#b08f04'
-    }
-  },
-
-  //cheat mode - shows country tags if checked
-  onRegionTipShow: function(e, el, code){
-    var checkbox = document.querySelector("#cheat-mode");
-    if (checkbox.checked == true){
-          return true;
-        }
-      else{
-
-            return false;
-          }
-        },
-
-  //if correct country is clicked, set as selected
-  onRegionClick: function(e, code) {
-    if (code == getCurrentAbbrev()) {
-      startGame.textContent = correct[Math.floor(Math.random() * correct.length)];
-      startGame.style.pointerEvents = "none";
-      startGame.style.color = "white";
-      map.setSelectedRegions(code);
-      guessCounter.textContent = "0";
-      countryListName.splice(index, 1);
-      countryListAbbrev.splice(index, 1);
-      clickStartGame();
-
-
-
-    } else {
-      startGame.textContent = wrong[Math.floor(Math.random() * wrong.length)];
-      startGame.style.color = "#a11f1f";
-      startGame.style.pointerEvents = "none";
-      guessIncorrectly();
-
-      }
-    },
-
-  });
-});
+var region = "northAmerica"
 </script>
 </html>
